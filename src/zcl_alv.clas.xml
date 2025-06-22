@@ -13,8 +13,23 @@
    </VSEOCLASS>
    <DESCRIPTIONS>
     <SEOCOMPOTX>
+     <CMPNAME>C</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Constantes</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>C</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Constantes</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>CREATE</CMPNAME>
      <LANGU>E</LANGU>
+     <DESCRIPT>crea grilla</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <LANGU>S</LANGU>
      <DESCRIPT>crea grilla</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
@@ -23,9 +38,29 @@
      <DESCRIPT>Crea el catalogo de campos</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>CREATE_FIELDCAT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Crea el catalogo de campos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>CREATE_FIELDCAT_EXIT</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Ajustes add hoc para los campos</DESCRIPT>
+     <DESCRIPT> - Ajustes add hoc para los campos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FIELDCAT_EXIT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT> - Ajustes add hoc para los campos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FIELDCAT_FILL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT> - Llena Tabla de Catalogo</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FIELDCAT_FILL</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT> - Llena Tabla de Catalogo</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>CREATE_LAYOUT</CMPNAME>
@@ -33,13 +68,48 @@
      <DESCRIPT>Ajustes al layout</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>CREATE_LAYOUT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Ajustes al layout</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_REGISTER_EVENTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT> - Registra Eventos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_REGISTER_EVENTS</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT> - Registra Eventos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>DISPLAY</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Muestra la grilla</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>DISPLAY</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Muestra la grilla</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DISPLAY_EX_BTN</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT> - Excluye botones</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DISPLAY_EX_BTN</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT> - Excluye botones</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>DISPLAY_GRID</CMPNAME>
      <LANGU>E</LANGU>
+     <DESCRIPT> - Propiamentetal</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DISPLAY_GRID</CMPNAME>
+     <LANGU>S</LANGU>
      <DESCRIPT> - Propiamentetal</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
@@ -48,8 +118,18 @@
      <DESCRIPT> - Setea la toolbar del programa</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>DISPLAY_PF_STATUS</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT> - Setea la toolbar del programa</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>LINE_DDIC_TYPE</CMPNAME>
      <LANGU>E</LANGU>
+     <DESCRIPT>Name of Dictionary Type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>LINE_DDIC_TYPE</CMPNAME>
+     <LANGU>S</LANGU>
      <DESCRIPT>Name of Dictionary Type</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
@@ -58,9 +138,119 @@
      <DESCRIPT>ALV control: Layout structure</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>LS_LAYOUT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>ALV control: Layout structure</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>LT_FIELDCAT</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Field Catalog for List Viewer Control</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>LT_FIELDCAT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Field Catalog for List Viewer Control</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_BUTTON_CLICK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Al hacer click en un celda boton</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_BUTTON_CLICK</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Al hacer click en un celda boton</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DATA_CHANGED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Cuando Se modifique data</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DATA_CHANGED</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Cuando Se modifique data</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DATA_CHANGED_FINISHED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Al terminar las modiicaciones</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DATA_CHANGED_FINISHED</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Al terminar las modiicaciones</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DOUBLE_CLICK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>al hacer doble click en un celda</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_DOUBLE_CLICK</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>al hacer doble click en un celda</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_HOTSPOT_CLICK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>al hacer click en una celda que esta definida como hotspot</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_HOTSPOT_CLICK</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>al hacer click en una celda que esta definida como hotspot</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_TOOLBAR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Antes de Mostrar la Barra de herramientas</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_TOOLBAR</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Antes de Mostrar la Barra de herramientas</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_USER_COMMAND</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Ejecuta Tareas de Usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_USER_COMMAND</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Ejecuta Tareas de Usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_USER_COMMAND_BEFORE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Antes de ejecutar Tareas de Usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ON_USER_COMMAND_BEFORE</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Antes de ejecutar Tareas de Usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PAI</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Procesar despues input de usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PAI</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Procesar despues input de usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REF_ALV_CHANGED_DATA_PROTOCOL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Log for Data Entry</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REF_ALV_CHANGED_DATA_PROTOCOL</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Message Log for Data Entry</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>REF_CONTAINER</CMPNAME>
@@ -68,8 +258,23 @@
      <DESCRIPT>Proxy Class for Control in GUI</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>REF_CONTAINER</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Proxy Class for Control in GUI</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REF_DATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>REF_GRID</CMPNAME>
      <LANGU>E</LANGU>
+     <DESCRIPT>ALV List Viewer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REF_GRID</CMPNAME>
+     <LANGU>S</LANGU>
      <DESCRIPT>ALV List Viewer</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
@@ -78,8 +283,18 @@
      <DESCRIPT>SAP Timer Control</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>REF_GUI_TIMER</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>SAP Timer Control</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>SET_CONTAINER</CMPNAME>
      <LANGU>E</LANGU>
+     <DESCRIPT>Setea el Contenedor</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_CONTAINER</CMPNAME>
+     <LANGU>S</LANGU>
      <DESCRIPT>Setea el Contenedor</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
@@ -88,9 +303,29 @@
      <DESCRIPT>setea la tabla a mostrar</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>SET_REF_DATA</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>setea la tabla a mostrar</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>SHOW</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Muestra la grilla</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SHOW</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Muestra la grilla</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>T_TOOLBAR_EXCLUDING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Funciones a Excluir</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>T_TOOLBAR_EXCLUDING</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Funciones a Excluir</DESCRIPT>
     </SEOCOMPOTX>
    </DESCRIPTIONS>
    <DESCRIPTIONS_SUB>
@@ -99,12 +334,6 @@
      <SCONAME>REF_FIELDCAT</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>ALV control: Field catalog</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE_LAYOUT</CMPNAME>
-     <SCONAME>REF_LAYOUT</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ALV control: Layout structure</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>SET_CONTAINER</CMPNAME>

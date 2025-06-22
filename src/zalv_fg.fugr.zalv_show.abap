@@ -1,11 +1,17 @@
-function ZALV_SHOW.
+function zalv_show.
 *"----------------------------------------------------------------------
-*"*"Local Interface:
+*"*"Interfase local
 *"  IMPORTING
 *"     REFERENCE(REF_ALV) TYPE REF TO  ZCL_ALV
 *"----------------------------------------------------------------------
 
-  gref_alv = ref_alv.
-*  gref_alv->set_container( new cl_gui_custom_container( container_name = 'CONTAINER' ) ).
-  call screen 9001.
+  data: dynnr like sy-dynnr.
+
+  dynnr = 9000 + lines( gt_dynnr ) + 1.
+  append
+   value #( dynnr = dynnr ref_alv = ref_alv )
+      to gt_dynnr.
+  call screen dynnr.
+  delete gt_dynnr
+   where dynnr eq dynnr.
 endfunction.

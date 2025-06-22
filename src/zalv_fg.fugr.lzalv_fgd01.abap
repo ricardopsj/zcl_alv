@@ -2,31 +2,40 @@
 *& Include          LZRPS_ALV_FGD01
 *&---------------------------------------------------------------------*
 
-module pbo_9001 output.
-  set pf-status 'ZSTATUS' of program 'SAPLZALV_FG'.
-
-  call method gref_alv->create( ).
-  call method gref_alv->display( ).
+module pbo_alv output.
+  read table gt_dynnr with key dynnr = sy-dynnr reference into data(ref_dynnr).
+  if ref_dynnr->ref_container is initial.
+    ref_dynnr->ref_container = new cl_gui_custom_container( repid = 'SAPLZALV_FG' dynnr = ref_dynnr->dynnr container_name = 'CONTAINER' ).
+    ref_dynnr->ref_alv->set_container( ref_dynnr->ref_container ).
+    ref_dynnr->ref_alv->create( ).
+    ref_dynnr->ref_alv->display( ).
+*    cl_gui_cfw=>flush( ).
+  endif.
 endmodule.
 
-module pai_9001 input.
+module pai_alv input.
   case sy-ucomm.
     when 'BACK' or 'EXIT' or 'CANCEL'.
+      read table gt_dynnr with key dynnr = sy-dynnr reference into ref_dynnr.
+      if sy-subrc eq 0.
+        if ref_dynnr->ref_alv->ref_grid is bound.
+          ref_dynnr->ref_alv->ref_grid->free( ).
+        endif.
+        if ref_dynnr->ref_container is bound.
+          ref_dynnr->ref_container->free( ).
+        endif.
+        clear: ref_dynnr->ref_alv->ref_grid
+             , ref_dynnr->ref_container.
+      endif.
       set screen 0.
       leave screen.
     when others.
-      case sy-ucomm.
-        when '&ODN'.
-          sy-ucomm = gref_alv->ref_grid->mc_fc_sort_dsc.
-        when '&OUP'.
-          sy-ucomm = gref_alv->ref_grid->mc_fc_sort_asc.
-          call method gref_alv->ref_grid->get_selected_columns
-            importing
-              et_index_columns = data(lt_row_col).
-        when '&OL0'.
-          sy-ucomm = gref_alv->ref_grid->mc_mb_variant.
-      endcase.
-      gref_alv->ref_grid->fcode_bouncer( ).
-      gref_alv->ref_grid->refresh_table_display( is_stable = value lvc_s_stbl( row = 'X' col = 'X' ) ).
+      field-symbols: <fcode> like sy-ucomm.
+
+      read table gt_dynnr with key dynnr = sy-dynnr reference into ref_dynnr.
+
+      data(fcode_name) = 'D' && sy-dynnr && '_FCODE'.
+      assign (fcode_name) to <fcode>.
+      ref_dynnr->ref_alv->on_user_command( <fcode> ).
   endcase.
 endmodule.
