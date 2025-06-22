@@ -123,6 +123,11 @@
      <DESCRIPT> - Setea la toolbar del programa</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>GET_SELECTED_ROWS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Obtiene Tabla con referencia a las lineas seleccionadas</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>LINE_DDIC_TYPE</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Name of Dictionary Type</DESCRIPT>
@@ -334,6 +339,12 @@
      <SCONAME>REF_FIELDCAT</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>ALV control: Field catalog</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_SELECTED_ROWS</CMPNAME>
+     <SCONAME>RT_ROWS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Tabla de Filas</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>SET_CONTAINER</CMPNAME>

@@ -97,6 +97,9 @@ public section.
   methods DISPLAY_EX_BTN .
   methods DISPLAY_GRID .
   methods DISPLAY_PF_STATUS .
+  methods GET_SELECTED_ROWS
+    returning
+      value(RT_ROWS) type ZALV_T_ROW .
   methods ON_BUTTON_CLICK
     for event BUTTON_CLICK of CL_GUI_ALV_GRID
     importing
@@ -378,6 +381,22 @@ CLASS ZCL_ALV IMPLEMENTATION.
   endmethod.
 
 
+  method get_selected_rows.
+    data: lt_rows type lvc_t_row.
+    field-symbols: <lt> type standard table.
+
+    assign ref_data->* to <lt>.
+    ref_grid->get_selected_rows( importing et_index_rows = lt_rows ).
+    loop at lt_rows assigning field-symbol(<ls_rows>).
+      if <ls_rows>-rowtype(1) eq c-rowtype-normal.
+        append initial line to rt_rows assigning field-symbol(<rs_rows>).
+        <rs_rows>-index = <ls_rows>-index.
+        read table <lt> index <rs_rows>-index reference into <rs_rows>-ref_row.
+      endif.
+    endloop.
+  endmethod.
+
+
   method ON_BUTTON_CLICK.
   endmethod.
 
@@ -459,6 +478,12 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
 
   method on_user_command.
+    data(method_name) = 'OK_' && e_ucomm.
+    data(lt_rows) = get_selected_rows( ).
+
+    call method (method_name)
+      exporting
+        it_rows = lt_rows.
   endmethod.
 
 
