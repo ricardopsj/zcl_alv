@@ -4,86 +4,93 @@ class ZCL_ALV definition
 
 public section.
 
-  data REF_DATA type ref to DATA .
-  data REF_CONTAINER type ref to CL_GUI_CONTAINER .
-  data REF_GRID type ref to CL_GUI_ALV_GRID .
-  data REF_ALV_CHANGED_DATA_PROTOCOL type ref to CL_ALV_CHANGED_DATA_PROTOCOL .
-  data REF_GUI_TIMER type ref to CL_GUI_TIMER .
-  data REF_TABLE_DESCR type ref to CL_ABAP_TABLEDESCR .
-  data REF_LINE_DESCR type ref to CL_ABAP_STRUCTDESCR .
-  data LINE_DDIC_TYPE type TYPENAME .
-  data LT_FIELDCAT type LVC_T_FCAT .
-  data LS_LAYOUT type LVC_S_LAYO .
-  data T_TOOLBAR_EXCLUDING type UI_FUNCTIONS .
+  data:
+    begin of s_actvt
+        , actvt type tact-actvt
+        , ltext type tactt-ltext
+        , end of s_actvt .
   constants:
     begin of c
-                      , begin of line_color
-                        , celeste              type char4 value 'C100' " Celeste
-                        , celeste_inv          type char4 value 'C101' " Celeste, texto inverso
-                        , celeste_intenso      type char4 value 'C110' " Celeste Intenso
-                        , celeste_intenso_inv  type char4 value 'C111' " Celeste Intenso, texto inverso
-                        , gris                 type char4 value 'C200' " Gris
-                        , gris_inv             type char4 value 'C201' " Gris, texto inverso
-                        , gris_intenso         type char4 value 'C210' " Gris Intenso
-                        , gris_intenso_inv     type char4 value 'C211' " Gris Intenso, texto inverso
-                        , amarillo             type char4 value 'C300' " Amarillo
-                        , amarillo_inv         type char4 value 'C301' " Amarillo, texto inverso
-                        , amarillo_intenso     type char4 value 'C310' " Amarillo Intenso
-                        , amarillo_intenso_inv type char4 value 'C311' " Amarillo Intenso, texto inverso
-                        , azul                 type char4 value 'C400' " Azul
-                        , azul_inv             type char4 value 'C401' " Azul, texto inverso
-                        , azul_intenso         type char4 value 'C410' " Azul Intenso
-                        , azul_intenso_inv     type char4 value 'C411' " Azul Intenso, texto inverso
-                        , verde                type char4 value 'C500' " Verde
-                        , verde_inv            type char4 value 'C501' " Verde, texto inverso
-                        , verde_intenso        type char4 value 'C510' " Verde Intenso
-                        , verde_intenso_inv    type char4 value 'C511' " Verde Intenso, texto inverso
-                        , rojo                 type char4 value 'C600' " Rojo
-                        , rojo_inv             type char4 value 'C601' " Rojo, texto inverso
-                        , rojo_intenso         type char4 value 'C610' " Rojo Intenso
-                        , rojo_intenso_inv     type char4 value 'C611' " Rojo Intenso, texto inverso
-                        , naranjo              type char4 value 'C700' " Naranjo
-                        , naranjo_inv          type char4 value 'C701' " Naranjo, texto inverso
-                        , naranjo_intenso      type char4 value 'C710' " Naranjo Intenso
-                        , naranjo_intenso_inv  type char4 value 'C711' " Naranjo Intenso, texto inverso
-                      , end of line_color
-                      , begin of fcode
-                        , detail type ui_func value '&DETAIL' " Detalle
-                        , refresh type ui_func value '&REFRESH' " Refrescar
-                        , cut type ui_func value '&LOCAL&CUT' " Cortar
-                        , copy type ui_func value '&LOCAL&COPY' " Copiar
-                        , paste type ui_func value '&LOCAL&PASTE' " pegar
-                        , undo type ui_func value '&LOCAL&UNDO' " Deshacer, undo TYPE ui_func VALUE '&LOCAL&UNDO' " Deshacer
-                        , append_lines type ui_func value '&LOCAL&APPEND' " Añadir líneas, append_lines TYPE ui_func VALUE '&LOCAL&APPEND' " Añadir líneas
-                        , insert_row type ui_func value '&LOCAL&INSERT_ROW' " Insertar línea, insert_row TYPE ui_func VALUE '&LOCAL&INSERT_ROW' " Insertar línea
-                        , duplicate_row type ui_func value `&LOCAL&COPY_ROW` " Dupilcar Linea
-                        , delete_row type ui_func value '&LOCAL&DELETE_ROW' " Borrar línea, delete_row TYPE ui_func VALUE '&LOCAL&DELETE_ROW' " Borrar línea
-                        , sort_asc type ui_func value '&SORT_ASC' " Clasific.ascendente, sort_asc TYPE ui_func VALUE '&SORT_ASC' " Clasific.ascendente
-                        , sort_desc type ui_func value '&SORT_DSC' " Clasific.descendente, sort_desc TYPE ui_func VALUE '&SORT_DSC' " Clasific.descendente
-                        , find type ui_func value '&FIND' " Buscar..., find TYPE ui_func VALUE '&FIND' " Buscar...
-                        , find_more type ui_func value '&FIND_MORE' " Continuar búsqueda, find_more TYPE ui_func VALUE '&FIND_MORE' " Continuar búsqueda
-                        , filter type ui_func value '&MB_FILTER' " Fijar filtro..., filter TYPE ui_func VALUE '&MB_FILTER' " Fijar filtro...
-                        , sum type ui_func value '&MB_SUM' " Total, sum TYPE ui_func VALUE '&MB_SUM' " Total
-                        , subtotals type ui_func value '&MB_SUBTOT' " Subtotales, subtotals TYPE ui_func VALUE '&MB_SUBTOT' " Subtotales
-                        , print type ui_func value '&PRINT_BACK' " Impr., print TYPE ui_func VALUE '&PRINT_BACK' " Impr.
-                        , views type ui_func value '&MB_VIEW' " Vistas, views TYPE ui_func VALUE '&MB_VIEW' " Vistas
-                        , export type ui_func value '&MB_EXPORT' " Exportar, export TYPE ui_func VALUE '&MB_EXPORT' " Exportar
-                        , layout type ui_func value '&COL0' " Modificar disposición..., layout TYPE ui_func VALUE '&COL0' " Modificar disposición...
-                        , documentation type ui_func value '&INFO' " Documentación usuario END OF fcode., documentation TYPE ui_func VALUE '&INFO' " Documentación usuario END OF fcode.
-                      , end of fcode
-                      , begin of sel_mode
-                         , multiple_row_col    type lvc_libox value 'A' " Selección múltiple de filas y columnas con botones de selección
-                         , single              type lvc_libox value 'B' " Selección simple (tipo listbox), permite seleccionar solo una fila o columna
-                         , multiple_row_no_btn type lvc_libox value 'C' " Selección múltiple de filas sin botones de selección
-                         , multiple_row_all    type lvc_libox value 'D' " Selección múltiple de filas con botones de selección y "Seleccionar todo"
-                       , end of sel_mode
-                       , begin of rowtype
-                         , normal   type lvc_rtype value ' '
-                         , total    type lvc_rtype value 'T'
-                         , subtotal type lvc_rtype value 'S'
-                         , locked   type lvc_rtype value 'L'
-                       , end of rowtype
-                      , end of c .
+                            , begin of line_color
+                              , celeste              type char4 value 'C100' " Celeste
+                              , celeste_inv          type char4 value 'C101' " Celeste, texto inverso
+                              , celeste_intenso      type char4 value 'C110' " Celeste Intenso
+                              , celeste_intenso_inv  type char4 value 'C111' " Celeste Intenso, texto inverso
+                              , gris                 type char4 value 'C200' " Gris
+                              , gris_inv             type char4 value 'C201' " Gris, texto inverso
+                              , gris_intenso         type char4 value 'C210' " Gris Intenso
+                              , gris_intenso_inv     type char4 value 'C211' " Gris Intenso, texto inverso
+                              , amarillo             type char4 value 'C300' " Amarillo
+                              , amarillo_inv         type char4 value 'C301' " Amarillo, texto inverso
+                              , amarillo_intenso     type char4 value 'C310' " Amarillo Intenso
+                              , amarillo_intenso_inv type char4 value 'C311' " Amarillo Intenso, texto inverso
+                              , azul                 type char4 value 'C400' " Azul
+                              , azul_inv             type char4 value 'C401' " Azul, texto inverso
+                              , azul_intenso         type char4 value 'C410' " Azul Intenso
+                              , azul_intenso_inv     type char4 value 'C411' " Azul Intenso, texto inverso
+                              , verde                type char4 value 'C500' " Verde
+                              , verde_inv            type char4 value 'C501' " Verde, texto inverso
+                              , verde_intenso        type char4 value 'C510' " Verde Intenso
+                              , verde_intenso_inv    type char4 value 'C511' " Verde Intenso, texto inverso
+                              , rojo                 type char4 value 'C600' " Rojo
+                              , rojo_inv             type char4 value 'C601' " Rojo, texto inverso
+                              , rojo_intenso         type char4 value 'C610' " Rojo Intenso
+                              , rojo_intenso_inv     type char4 value 'C611' " Rojo Intenso, texto inverso
+                              , naranjo              type char4 value 'C700' " Naranjo
+                              , naranjo_inv          type char4 value 'C701' " Naranjo, texto inverso
+                              , naranjo_intenso      type char4 value 'C710' " Naranjo Intenso
+                              , naranjo_intenso_inv  type char4 value 'C711' " Naranjo Intenso, texto inverso
+                            , end of line_color
+                            , begin of fcode
+                              , detail type ui_func value '&DETAIL' " Detalle
+                              , refresh type ui_func value '&REFRESH' " Refrescar
+                              , cut type ui_func value '&LOCAL&CUT' " Cortar
+                              , copy type ui_func value '&LOCAL&COPY' " Copiar
+                              , paste type ui_func value '&LOCAL&PASTE' " pegar
+                              , undo type ui_func value '&LOCAL&UNDO' " Deshacer, undo TYPE ui_func VALUE '&LOCAL&UNDO' " Deshacer
+                              , append_lines type ui_func value '&LOCAL&APPEND' " Añadir líneas, append_lines TYPE ui_func VALUE '&LOCAL&APPEND' " Añadir líneas
+                              , insert_row type ui_func value '&LOCAL&INSERT_ROW' " Insertar línea, insert_row TYPE ui_func VALUE '&LOCAL&INSERT_ROW' " Insertar línea
+                              , duplicate_row type ui_func value `&LOCAL&COPY_ROW` " Dupilcar Linea
+                              , delete_row type ui_func value '&LOCAL&DELETE_ROW' " Borrar línea, delete_row TYPE ui_func VALUE '&LOCAL&DELETE_ROW' " Borrar línea
+                              , sort_asc type ui_func value '&SORT_ASC' " Clasific.ascendente, sort_asc TYPE ui_func VALUE '&SORT_ASC' " Clasific.ascendente
+                              , sort_desc type ui_func value '&SORT_DSC' " Clasific.descendente, sort_desc TYPE ui_func VALUE '&SORT_DSC' " Clasific.descendente
+                              , find type ui_func value '&FIND' " Buscar..., find TYPE ui_func VALUE '&FIND' " Buscar...
+                              , find_more type ui_func value '&FIND_MORE' " Continuar búsqueda, find_more TYPE ui_func VALUE '&FIND_MORE' " Continuar búsqueda
+                              , filter type ui_func value '&MB_FILTER' " Fijar filtro..., filter TYPE ui_func VALUE '&MB_FILTER' " Fijar filtro...
+                              , sum type ui_func value '&MB_SUM' " Total, sum TYPE ui_func VALUE '&MB_SUM' " Total
+                              , subtotals type ui_func value '&MB_SUBTOT' " Subtotales, subtotals TYPE ui_func VALUE '&MB_SUBTOT' " Subtotales
+                              , print type ui_func value '&PRINT_BACK' " Impr., print TYPE ui_func VALUE '&PRINT_BACK' " Impr.
+                              , views type ui_func value '&MB_VIEW' " Vistas, views TYPE ui_func VALUE '&MB_VIEW' " Vistas
+                              , export type ui_func value '&MB_EXPORT' " Exportar, export TYPE ui_func VALUE '&MB_EXPORT' " Exportar
+                              , layout type ui_func value '&COL0' " Modificar disposición..., layout TYPE ui_func VALUE '&COL0' " Modificar disposición...
+                              , documentation type ui_func value '&INFO' " Documentación usuario END OF fcode., documentation TYPE ui_func VALUE '&INFO' " Documentación usuario END OF fcode.
+                            , end of fcode
+                            , begin of sel_mode
+                               , multiple_row_col    type lvc_libox value 'A' " Selección múltiple de filas y columnas con botones de selección
+                               , single              type lvc_libox value 'B' " Selección simple (tipo listbox), permite seleccionar solo una fila o columna
+                               , multiple_row_no_btn type lvc_libox value 'C' " Selección múltiple de filas sin botones de selección
+                               , multiple_row_all    type lvc_libox value 'D' " Selección múltiple de filas con botones de selección y "Seleccionar todo"
+                             , end of sel_mode
+                             , begin of rowtype
+                               , normal   type lvc_rtype value ' '
+                               , total    type lvc_rtype value 'T'
+                               , subtotal type lvc_rtype value 'S'
+                               , locked   type lvc_rtype value 'L'
+                             , end of rowtype
+                            , end of c .
+  data LINE_DDIC_TYPE type TYPENAME .
+  data REF_ALV_CHANGED_DATA_PROTOCOL type ref to CL_ALV_CHANGED_DATA_PROTOCOL .
+  data REF_CONTAINER type ref to CL_GUI_CONTAINER .
+  data REF_DATA type ref to DATA .
+  data REF_GRID type ref to CL_GUI_ALV_GRID .
+  data REF_GUI_TIMER type ref to CL_GUI_TIMER .
+  data REF_LINE_DESCR type ref to CL_ABAP_STRUCTDESCR .
+  data REF_TABLE_DESCR type ref to CL_ABAP_TABLEDESCR .
+  data S_LAYOUT type LVC_S_LAYO .
+  data T_FIELDCAT type LVC_T_FCAT .
+  data T_GRID_EXCLUDING type UI_FUNCTIONS .
+  data T_PROGRAM_EXCLUDING type UI_FUNCTIONS .
+  data S_VARIANT type DISVARIANT .
 
   methods CREATE .
   methods CREATE_FIELDCAT .
@@ -147,6 +154,10 @@ public section.
     importing
       !REF_DATA type ref to DATA .
   methods SHOW .
+  methods SET_ACTVT
+    importing
+      !ACTVT type CLIKE .
+  methods REFRESH_DISPLAY .
   protected section.
   private section.
 ENDCLASS.
@@ -170,7 +181,7 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
   method create_fieldcat.
     create_fieldcat_fill( ).
-    loop at lt_fieldcat reference into data(ref_fieldcat).
+    loop at t_fieldcat reference into data(ref_fieldcat).
       ref_fieldcat->col_pos = sy-tabix.
       ref_fieldcat->tabname = line_ddic_type.
       ref_fieldcat->col_opt = abap_true.
@@ -188,7 +199,7 @@ CLASS ZCL_ALV IMPLEMENTATION.
       exporting
         i_structure_name       = line_ddic_type
       changing
-        ct_fieldcat            = lt_fieldcat
+        ct_fieldcat            = t_fieldcat
       exceptions
         inconsistent_interface = 1
         program_error          = 2
@@ -269,13 +280,16 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
 
   method display.
-    display_pf_status( ).
     display_ex_btn( ).
+    display_pf_status( ).
     display_grid( ).
   endmethod.
 
 
   method display_ex_btn.
+    "Excluir Botones de la Toolbar del Programa
+*    append 'ELIMINAR' to t_program_excluding.
+    "Ecluir Botones de La Grilla
 *    append cl_gui_alv_grid=>mc_fc_auf to t_toolbar_excluding.                          " Análisis de órdenes
 *    append cl_gui_alv_grid=>mc_fc_average to t_toolbar_excluding.                      " Calcular promedio
 **   append cl_gui_alv_grid=>mc_fc_back_classic to t_toolbar_excluding.                 " Retroceder (clásico)
@@ -366,13 +380,14 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
     call method ref_grid->set_table_for_first_display
       exporting
- 	      it_toolbar_excluding  = t_toolbar_excluding
-        i_structure_name = line_ddic_type
-        is_layout        = ls_layout
-*        i_save           = abap_false
+        it_toolbar_excluding = t_grid_excluding
+        i_structure_name     = line_ddic_type
+        is_variant           = s_variant
+        is_layout            = s_layout
+        i_save               = 'A' "A: Todas, U: Solo usuario, X: Global
       changing
-        it_fieldcatalog  = lt_fieldcat
-        it_outtab        = <lt>.
+        it_fieldcatalog      = t_fieldcat
+        it_outtab            = <lt>.
   endmethod.
 
 
@@ -480,10 +495,13 @@ CLASS ZCL_ALV IMPLEMENTATION.
   method on_user_command.
     data(method_name) = 'OK_' && e_ucomm.
     data(lt_rows) = get_selected_rows( ).
-
-    call method (method_name)
-      exporting
-        it_rows = lt_rows.
+    try.
+        call method (method_name)
+          exporting
+            it_rows = lt_rows.
+      catch cx_root into data(ref_cx_root).
+        message ref_cx_root type 'I'.
+    endtry.
   endmethod.
 
 
@@ -496,6 +514,55 @@ CLASS ZCL_ALV IMPLEMENTATION.
   endmethod.
 
 
+  method refresh_display.
+    data: lt_selected_rows type lvc_t_row
+        , lt_selected_cells type lvc_t_cell
+        , lt_selected_columns type lvc_t_col.
+
+    call method ref_grid->get_selected_rows
+      importing
+        et_index_rows = lt_selected_rows.
+
+    call method ref_grid->get_selected_cells
+      importing
+        et_cell = lt_selected_cells.
+
+    call method ref_grid->get_selected_columns
+      importing
+        et_index_columns = lt_selected_columns.
+
+    ref_grid->refresh_table_display( is_stable = value #( row = abap_true col = abap_true ) i_soft_refresh = abap_true ).
+
+    if lt_selected_rows is not initial.
+      call method ref_grid->set_selected_rows
+        exporting
+          it_index_rows            = lt_selected_rows
+          is_keep_other_selections = abap_true.
+    endif.
+    if lt_selected_cells is not initial.
+      call method ref_grid->set_selected_cells
+        exporting
+          it_cells = lt_selected_cells.
+    endif.
+    if lt_selected_columns is not initial.
+      call method ref_grid->set_selected_columns
+        exporting
+          it_col_table             = lt_selected_columns
+          is_keep_other_selections = abap_true.
+    endif.
+  endmethod.
+
+
+  method set_actvt.
+    s_actvt-actvt = actvt.
+    select single ltext
+      into s_actvt-ltext
+      from tactt
+     where actvt eq s_actvt-actvt
+       and spras eq sy-langu.
+  endmethod.
+
+
   method set_container.
     me->ref_container = ref_container.
   endmethod.
@@ -503,12 +570,20 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
   method set_ref_data.
     me->ref_data = ref_data.
-
     ref_table_descr ?= cl_abap_tabledescr=>describe_by_data_ref( ref_data ).
     ref_line_descr ?= ref_table_descr->get_table_line_type( ).
     if ref_line_descr->is_ddic_type( ).
       line_ddic_type = ref_line_descr->get_relative_name( ).
     endif.
+
+
+    "Si el objeto tiene el un atributo ref_lt le asigna ref_data.
+    field-symbols: <ref_lt> type any.
+    try.
+        assign ('ref_lt') to <ref_lt>.
+        <ref_lt> ?= ref_data.
+      catch cx_root into data(ref_cx_root).
+    endtry.
   endmethod.
 
 

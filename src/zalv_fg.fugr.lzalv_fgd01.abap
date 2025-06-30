@@ -36,6 +36,8 @@ module pai_alv input.
 
       data(fcode_name) = 'D' && sy-dynnr && '_FCODE'.
       assign (fcode_name) to <fcode>.
-      ref_dynnr->ref_alv->on_user_command( <fcode> ).
+      if <fcode> is not initial.
+        ref_dynnr->ref_alv->on_user_command( <fcode> ).
+      endif.
   endcase.
 endmodule.

@@ -128,6 +128,11 @@
      <DESCRIPT>Obtiene Tabla con referencia a las lineas seleccionadas</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>GET_SELECTED_ROWS</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Obtiene Tabla con referencia a las lineas seleccionadas</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>LINE_DDIC_TYPE</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Name of Dictionary Type</DESCRIPT>
@@ -136,26 +141,6 @@
      <CMPNAME>LINE_DDIC_TYPE</CMPNAME>
      <LANGU>S</LANGU>
      <DESCRIPT>Name of Dictionary Type</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
-     <CMPNAME>LS_LAYOUT</CMPNAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ALV control: Layout structure</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
-     <CMPNAME>LS_LAYOUT</CMPNAME>
-     <LANGU>S</LANGU>
-     <DESCRIPT>ALV control: Layout structure</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
-     <CMPNAME>LT_FIELDCAT</CMPNAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Field Catalog for List Viewer Control</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
-     <CMPNAME>LT_FIELDCAT</CMPNAME>
-     <LANGU>S</LANGU>
-     <DESCRIPT>Field Catalog for List Viewer Control</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>ON_BUTTON_CLICK</CMPNAME>
@@ -246,6 +231,11 @@
      <CMPNAME>PAI</CMPNAME>
      <LANGU>S</LANGU>
      <DESCRIPT>Procesar despues input de usuario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REFRESH_DISPLAY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Refresca la visualización de la grilla</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>REF_ALV_CHANGED_DATA_PROTOCOL</CMPNAME>
@@ -293,6 +283,16 @@
      <DESCRIPT>SAP Timer Control</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>SET_ACTVT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Setea la Actividad del Panel</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_ACTVT</CMPNAME>
+     <LANGU>S</LANGU>
+     <DESCRIPT>Setea la Actividad del Panel</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>SET_CONTAINER</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Setea el Contenedor</DESCRIPT>
@@ -323,14 +323,39 @@
      <DESCRIPT>Muestra la grilla</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
-     <CMPNAME>T_TOOLBAR_EXCLUDING</CMPNAME>
+     <CMPNAME>S_ACTVT</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Funciones a Excluir</DESCRIPT>
+     <DESCRIPT>Activity</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
-     <CMPNAME>T_TOOLBAR_EXCLUDING</CMPNAME>
+     <CMPNAME>S_ACTVT</CMPNAME>
      <LANGU>S</LANGU>
-     <DESCRIPT>Funciones a Excluir</DESCRIPT>
+     <DESCRIPT>Activity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>S_LAYOUT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV control: Layout structure</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>S_VARIANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Layout (External Use)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>T_FIELDCAT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Field Catalog for List Viewer Control</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>T_GRID_EXCLUDING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Funciones a Excluir De la Toobal de La Grilla</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>T_PROGRAM_EXCLUDING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Funciones a Excluir De la Toobal del Programa</DESCRIPT>
     </SEOCOMPOTX>
    </DESCRIPTIONS>
    <DESCRIPTIONS_SUB>
