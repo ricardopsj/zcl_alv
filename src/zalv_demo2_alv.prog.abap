@@ -18,10 +18,10 @@ endclass.
 class lcl_alv_test implementation.
   method create_fieldcat_fill.
     " Configurar catálogo de campos
-    append value #( fieldname = 'CODE' scrtext_m = 'Código' outputlen = 10 ) to lt_fieldcat.
-    append value #( fieldname = 'NAME' scrtext_m = 'Nombre Descriptivo' outputlen = 50 ) to lt_fieldcat.
+    append value #( fieldname = 'CODE' scrtext_m = 'Código' outputlen = 10 ) to t_fieldcat.
+    append value #( fieldname = 'NAME' scrtext_m = 'Nombre Descriptivo' outputlen = 50 ) to t_fieldcat.
   endmethod.
   method create_layout.
-    ls_layout-info_fname = 'LINE_COLOR'.
+    s_layout-info_fname = 'LINE_COLOR'.
   endmethod.
 endclass.

@@ -33,8 +33,8 @@ class zcl_alv_test1 implementation.
     endif.
   endmethod.
   method create_layout.
-    ref_layout->sel_mode = me->cs_layout-sel_mode-multiple_row_all.
-    ref_layout->zebra = abap_true.
+    s_layout-sel_mode = c-sel_mode-multiple_row_all.
+    s_layout-zebra = abap_true.
   endmethod.
 endclass.
 

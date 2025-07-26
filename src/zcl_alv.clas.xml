@@ -313,6 +313,11 @@
      <DESCRIPT>setea la tabla a mostrar</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Setea Variante</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>SHOW</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Muestra la grilla</DESCRIPT>
@@ -376,6 +381,48 @@
      <SCONAME>REF_CONTAINER</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Abstract Container for GUI Controls</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>DEPENDVARS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dependent variant entry vector</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>HANDLE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Mgt. ID for repeated calls from the same program</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>LOG_GROUP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Logical group name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>REPORT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP Program Name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>TEXT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Description for layout</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>USERNAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>User name for user-specific storage</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Layout</DESCRIPT>
     </SEOSUBCOTX>
    </DESCRIPTIONS_SUB>
   </asx:values>

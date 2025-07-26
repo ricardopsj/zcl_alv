@@ -158,6 +158,15 @@ public section.
     importing
       !ACTVT type CLIKE .
   methods REFRESH_DISPLAY .
+  methods SET_VARIANT
+    importing
+      !REPORT type REPID default SY-CPROG
+      !HANDLE type SLIS_HANDL optional
+      !LOG_GROUP type SLIS_LOGGR optional
+      !USERNAME type SLIS_USER default SY-UNAME
+      !VARIANT type SLIS_VARI optional
+      !TEXT type SLIS_VARBZ optional
+      !DEPENDVARS type SLIS_DEPVS optional .
   protected section.
   private section.
 ENDCLASS.
@@ -378,6 +387,8 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
     assign ref_data->* to <lt>.
 
+    s_variant-report = sy-cprog.
+
     call method ref_grid->set_table_for_first_display
       exporting
         it_toolbar_excluding = t_grid_excluding
@@ -385,6 +396,7 @@ CLASS ZCL_ALV IMPLEMENTATION.
         is_variant           = s_variant
         is_layout            = s_layout
         i_save               = 'A' "A: Todas, U: Solo usuario, X: Global
+        I_DEFAULT            = abap_True "Muestra la variante por defecto
       changing
         it_fieldcatalog      = t_fieldcat
         it_outtab            = <lt>.
@@ -485,7 +497,7 @@ CLASS ZCL_ALV IMPLEMENTATION.
         or function eq c-fcode-refresh
         or function eq c-fcode-undo
         or function eq c-fcode-views
-        or function eq c-fcode-export
+*        or function eq c-fcode-export
         or function eq c-fcode-duplicate_row
         or function eq c-fcode-detail
         .
@@ -523,9 +535,9 @@ CLASS ZCL_ALV IMPLEMENTATION.
       importing
         et_index_rows = lt_selected_rows.
 
-    call method ref_grid->get_selected_cells
-      importing
-        et_cell = lt_selected_cells.
+*    call method ref_grid->get_selected_cells
+*      importing
+*        et_cell = lt_selected_cells.
 
     call method ref_grid->get_selected_columns
       importing
@@ -539,11 +551,11 @@ CLASS ZCL_ALV IMPLEMENTATION.
           it_index_rows            = lt_selected_rows
           is_keep_other_selections = abap_true.
     endif.
-    if lt_selected_cells is not initial.
-      call method ref_grid->set_selected_cells
-        exporting
-          it_cells = lt_selected_cells.
-    endif.
+*    if lt_selected_cells is not initial.
+*      call method ref_grid->set_selected_cells
+*        exporting
+*          it_cells = lt_selected_cells.
+*    endif.
     if lt_selected_columns is not initial.
       call method ref_grid->set_selected_columns
         exporting
@@ -584,6 +596,17 @@ CLASS ZCL_ALV IMPLEMENTATION.
         <ref_lt> ?= ref_data.
       catch cx_root into data(ref_cx_root).
     endtry.
+  endmethod.
+
+
+  method set_variant.
+    s_variant-report = report.
+    s_variant-handle = handle.
+    s_variant-log_group = log_group.
+    s_variant-username = username.
+    s_variant-variant = variant.
+    s_variant-text = text.
+    s_variant-dependvars = dependvars.
   endmethod.
 
 

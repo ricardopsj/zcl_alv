@@ -9,7 +9,6 @@ module pbo_alv output.
     ref_dynnr->ref_alv->set_container( ref_dynnr->ref_container ).
     ref_dynnr->ref_alv->create( ).
     ref_dynnr->ref_alv->display( ).
-*    cl_gui_cfw=>flush( ).
   endif.
 endmodule.
 

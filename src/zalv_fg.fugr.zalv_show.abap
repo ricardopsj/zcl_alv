@@ -14,4 +14,5 @@ function zalv_show.
   call screen dynnr.
   delete gt_dynnr
    where dynnr eq dynnr.
+  cl_gui_cfw=>flush( ).
 endfunction.
