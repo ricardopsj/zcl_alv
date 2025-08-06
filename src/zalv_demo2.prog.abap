@@ -48,33 +48,33 @@ start-of-selection.
         " Determinar nombre del color base
         case lv_x.
           when 1.
-            lv_color_name = 'Celeste'.
+            lv_color_name = 'Celeste'(cel).
           when 2.
-            lv_color_name = 'Gris'.
+            lv_color_name = 'Gris'(gri).
           when 3.
-            lv_color_name = 'Amarillo'.
+            lv_color_name = 'Amarillo'(ama).
           when 4.
-            lv_color_name = 'Azul'.
+            lv_color_name = 'Azul'(azu).
           when 5.
-            lv_color_name = 'Verde'.
+            lv_color_name = 'Verde'(ver).
           when 6.
-            lv_color_name = 'Rojo'.
+            lv_color_name = 'Rojo'(roj).
           when 7.
-            lv_color_name = 'Naranjo'.
+            lv_color_name = 'Naranjo'(nar).
         endcase.
 
         " Agregar intensificación al nombre
         if lv_y = 0.
           lv_intensified = ''.
         else.
-          lv_intensified = 'Intenso'.
+          lv_intensified = 'Intenso'(int).
         endif.
 
         " Agregar inversión al nombre
         if lv_z = 0.
           lv_inverse = ''.
         else.
-          lv_inverse = ', texto inverso'.
+          lv_inverse = ', texto inverso'(inv).
         endif.
 
         " Construir nombre descriptivo

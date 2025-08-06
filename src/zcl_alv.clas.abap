@@ -104,6 +104,7 @@ public section.
   methods DISPLAY_EX_BTN .
   methods DISPLAY_GRID .
   methods DISPLAY_PF_STATUS .
+  methods DISPLAY_TITLE .
   methods GET_SELECTED_ROWS
     returning
       value(RT_ROWS) type ZALV_T_ROW .
@@ -147,17 +148,16 @@ public section.
     importing
       !E_UCOMM .
   methods PAI .
+  methods REFRESH_DISPLAY .
+  methods SET_ACTVT
+    importing
+      !ACTVT type CLIKE .
   methods SET_CONTAINER
     importing
       !REF_CONTAINER type ref to CL_GUI_CONTAINER .
   methods SET_REF_DATA
     importing
       !REF_DATA type ref to DATA .
-  methods SHOW .
-  methods SET_ACTVT
-    importing
-      !ACTVT type CLIKE .
-  methods REFRESH_DISPLAY .
   methods SET_VARIANT
     importing
       !REPORT type REPID default SY-CPROG
@@ -167,6 +167,7 @@ public section.
       !VARIANT type SLIS_VARI optional
       !TEXT type SLIS_VARBZ optional
       !DEPENDVARS type SLIS_DEPVS optional .
+  methods SHOW .
   protected section.
   private section.
 ENDCLASS.
@@ -224,50 +225,33 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
 
   method create_layout.
-*    ls_layout-cwidth_opt = 'X'.
-*    ls_layout-edit = 'X'.
-*    ls_layout-grid_title = 'My Titlebar'(300).              "#EC NOTEXT
-*    ls_layout-no_toolbar = 'X'.
-*    ls_layout-no_vgridln = 'X'.
-*    ls_layout-no_hgridln = 'X'.
-*    ls_layout-no_merging = 'X'.
+    s_layout-cwidth_opt = 'X'.
+*    s_layout-edit = 'X'.
+*    s_layout-grid_title = 'My Titlebar'(300).              "#EC NOTEXT
+*    s_layout-no_toolbar = 'X'.
+*    s_layout-no_vgridln = 'X'.
+*    s_layout-no_hgridln = 'X'.
+*    s_layout-no_merging = 'X'.
 *    if p_lights = 'X' or p_lightc = 'X'.
-*      ls_layout-excp_fname = p_lignam.
+*      s_layout-excp_fname = p_lignam.
 *    else.
-*      ls_layout-excp_fname = space.
+*      s_layout-excp_fname = space.
 *    endif.
-*    if p_s_defa = 'X'.
-*      ls_layout-sel_mode = space.
-*    endif.
-*    if p_s_lbnf = 'X'.
-*      ls_layout-sel_mode = 'D'.
-*    endif.
-*    if p_s_lbno = 'X'.
-*      ls_layout-sel_mode = 'A'.
-*    endif.
-*    if p_s_lbsi = 'X'.
-*      ls_layout-sel_mode = 'B'.
-*    endif.
-*    if p_s_lbmu = 'X'.
-*      ls_layout-sel_mode = 'C'.
-*    endif.
-*    if p_cells = 'X'.
-*      ls_layout-ctab_fname = 'COLINFO'.
-*    else.
-*      ls_layout-ctab_fname = space.
-*    endif.
-*    ls_layout-info_fname = 'INFO'.
-*    ls_layout-no_headers = abap_true.
-*    ls_layout-no_rowmark = abap_true.
-*    ls_layout-excp_conds = p_lightc.
-*    ls_layout-totals_bef = p_totbef.
-*    ls_layout-excp_led = p_diode.
-*    ls_layout-weblook = p_webm.
-*    ls_layout-webstyle = p_webs.
-*    ls_layout-webrows = p_webr.
-*    ls_layout-webxwidth = p_webxw.
-*    ls_layout-webxheight = p_webxh.
-*     ls_layout-no_toolbar = 'X'.
+    s_layout-sel_mode = c-sel_mode-multiple_row_all.
+*    s_layout-ctab_fname = 'T_COLOR'.
+*    s_layout-info_fname = 'LINE_COLOR'.
+*    s_layout-zebra = abap_true.
+*    s_layout-no_headers = abap_true.
+*    s_layout-no_rowmark = abap_true.
+*    s_layout-excp_conds = p_lightc.
+*    s_layout-totals_bef = p_totbef.
+*    s_layout-excp_led = p_diode.
+*    s_layout-weblook = p_webm.
+*    s_layout-webstyle = p_webs.
+*    s_layout-webrows = p_webr.
+*    s_layout-webxwidth = p_webxw.
+*    s_layout-webxheight = p_webxh.
+*    s_layout-no_toolbar = 'X'.
   endmethod.
 
 
@@ -291,6 +275,7 @@ CLASS ZCL_ALV IMPLEMENTATION.
   method display.
     display_ex_btn( ).
     display_pf_status( ).
+    display_title( ).
     display_grid( ).
   endmethod.
 
@@ -405,6 +390,11 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
   method display_pf_status.
     set pf-status 'ZSTATUS' of program 'SAPLZALV_FG'.
+  endmethod.
+
+
+  method display_title.
+    set titlebar 'MAIN' of program sy-cprog.
   endmethod.
 
 

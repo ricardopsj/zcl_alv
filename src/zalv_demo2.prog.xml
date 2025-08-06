@@ -11,14 +11,127 @@
     <FIXPT>X</FIXPT>
     <UCCHECK>X</UCCHECK>
    </PROGDIR>
+   <CUA>
+    <TIT>
+     <RSMPE_TITT>
+      <CODE>MAIN</CODE>
+      <TEXT>Colors</TEXT>
+     </RSMPE_TITT>
+    </TIT>
+   </CUA>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>AMA</KEY>
+     <ENTRY>Yellow</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>AZU</KEY>
+     <ENTRY>Blue</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>CEL</KEY>
+     <ENTRY>Light Blue</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>GRI</KEY>
+     <ENTRY>Gray</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>INT</KEY>
+     <ENTRY>Intense</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>INV</KEY>
+     <ENTRY>Reverse text</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>NAR</KEY>
+     <ENTRY>Orange</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>ROJ</KEY>
+     <ENTRY>Red</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>VER</KEY>
+     <ENTRY>Green</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+   </TPOOL>
    <I18N_TPOOL>
     <item>
      <LANGUAGE>S</LANGUAGE>
      <TEXTPOOL>
       <item>
-       <ID>R</ID>
-       <ENTRY>Colores</ENTRY>
-       <LENGTH>7</LENGTH>
+       <ID>I</ID>
+       <KEY>AMA</KEY>
+       <ENTRY>Amarillo</ENTRY>
+       <LENGTH>18</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>AZU</KEY>
+       <ENTRY>Azul</ENTRY>
+       <LENGTH>14</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>CEL</KEY>
+       <ENTRY>Celeste</ENTRY>
+       <LENGTH>17</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>GRI</KEY>
+       <ENTRY>Gris</ENTRY>
+       <LENGTH>14</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>INT</KEY>
+       <ENTRY>Intenso</ENTRY>
+       <LENGTH>17</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>INV</KEY>
+       <ENTRY>, texto inverso</ENTRY>
+       <LENGTH>25</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>NAR</KEY>
+       <ENTRY>Naranjo</ENTRY>
+       <LENGTH>17</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>ROJ</KEY>
+       <ENTRY>Rojo</ENTRY>
+       <LENGTH>14</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>VER</KEY>
+       <ENTRY>Verde</ENTRY>
+       <LENGTH>15</LENGTH>
       </item>
      </TEXTPOOL>
     </item>
