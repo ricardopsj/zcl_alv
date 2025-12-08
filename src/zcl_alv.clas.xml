@@ -4,7 +4,7 @@
   <asx:values>
    <VSEOCLASS>
     <CLSNAME>ZCL_ALV</CLSNAME>
-    <LANGU>E</LANGU>
+    <LANGU>S</LANGU>
     <DESCRIPT>Facilita uso de CL_GUI_ALV_GRID</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>

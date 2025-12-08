@@ -205,21 +205,29 @@ CLASS ZCL_ALV IMPLEMENTATION.
 
 
   method create_fieldcat_fill.
-    call function 'LVC_FIELDCATALOG_MERGE'
-      exporting
-        i_structure_name       = line_ddic_type
-      changing
-        ct_fieldcat            = t_fieldcat
-      exceptions
-        inconsistent_interface = 1
-        program_error          = 2
-        others                 = 3.
-    if sy-subrc <> 0.
-      message id sy-msgid
-            type sy-msgty
-          number sy-msgno
-            with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
-      leave program.
+    if line_ddic_type is not initial.
+      call function 'LVC_FIELDCATALOG_MERGE'
+        exporting
+          i_structure_name       = line_ddic_type
+        changing
+          ct_fieldcat            = t_fieldcat
+        exceptions
+          inconsistent_interface = 1
+          program_error          = 2
+          others                 = 3.
+      if sy-subrc <> 0.
+        message id sy-msgid
+              type sy-msgty
+            number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+        leave program.
+      endif.
+    else.
+      data(t_dfies) = cl_salv_data_descr=>read_structdescr( ref_line_descr ).
+      move-corresponding t_dfies to t_fieldcat.
+      loop at t_fieldcat reference into data(ref_fieldcat) where reptext = ''.
+        ref_fieldcat->reptext = ref_fieldcat->fieldname.
+      endloop.
     endif.
   endmethod.
 
