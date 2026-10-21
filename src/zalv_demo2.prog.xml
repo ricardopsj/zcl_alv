@@ -15,7 +15,7 @@
     <TIT>
      <RSMPE_TITT>
       <CODE>MAIN</CODE>
-      <TEXT>Colors</TEXT>
+      <TEXT>Colores</TEXT>
      </RSMPE_TITT>
     </TIT>
    </CUA>
@@ -23,114 +23,114 @@
     <item>
      <ID>I</ID>
      <KEY>AMA</KEY>
-     <ENTRY>Yellow</ENTRY>
+     <ENTRY>Amarillo</ENTRY>
      <LENGTH>18</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>AZU</KEY>
-     <ENTRY>Blue</ENTRY>
+     <ENTRY>Azul</ENTRY>
      <LENGTH>14</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>CEL</KEY>
-     <ENTRY>Light Blue</ENTRY>
+     <ENTRY>Celeste</ENTRY>
      <LENGTH>17</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>GRI</KEY>
-     <ENTRY>Gray</ENTRY>
+     <ENTRY>Gris</ENTRY>
      <LENGTH>14</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>INT</KEY>
-     <ENTRY>Intense</ENTRY>
+     <ENTRY>Intenso</ENTRY>
      <LENGTH>17</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>INV</KEY>
-     <ENTRY>Reverse text</ENTRY>
+     <ENTRY>, texto inverso</ENTRY>
      <LENGTH>25</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>NAR</KEY>
-     <ENTRY>Orange</ENTRY>
+     <ENTRY>Naranjo</ENTRY>
      <LENGTH>17</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>ROJ</KEY>
-     <ENTRY>Red</ENTRY>
+     <ENTRY>Rojo</ENTRY>
      <LENGTH>14</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>VER</KEY>
-     <ENTRY>Green</ENTRY>
+     <ENTRY>Verde</ENTRY>
      <LENGTH>15</LENGTH>
     </item>
    </TPOOL>
    <I18N_TPOOL>
     <item>
-     <LANGUAGE>S</LANGUAGE>
+     <LANGUAGE>E</LANGUAGE>
      <TEXTPOOL>
       <item>
        <ID>I</ID>
        <KEY>AMA</KEY>
-       <ENTRY>Amarillo</ENTRY>
+       <ENTRY>Yellow</ENTRY>
        <LENGTH>18</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>AZU</KEY>
-       <ENTRY>Azul</ENTRY>
+       <ENTRY>Blue</ENTRY>
        <LENGTH>14</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>CEL</KEY>
-       <ENTRY>Celeste</ENTRY>
+       <ENTRY>Light Blue</ENTRY>
        <LENGTH>17</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>GRI</KEY>
-       <ENTRY>Gris</ENTRY>
+       <ENTRY>Gray</ENTRY>
        <LENGTH>14</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>INT</KEY>
-       <ENTRY>Intenso</ENTRY>
+       <ENTRY>Intense</ENTRY>
        <LENGTH>17</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>INV</KEY>
-       <ENTRY>, texto inverso</ENTRY>
+       <ENTRY>Reverse text</ENTRY>
        <LENGTH>25</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>NAR</KEY>
-       <ENTRY>Naranjo</ENTRY>
+       <ENTRY>Orange</ENTRY>
        <LENGTH>17</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>ROJ</KEY>
-       <ENTRY>Rojo</ENTRY>
+       <ENTRY>Red</ENTRY>
        <LENGTH>14</LENGTH>
       </item>
       <item>
        <ID>I</ID>
        <KEY>VER</KEY>
-       <ENTRY>Verde</ENTRY>
+       <ENTRY>Green</ENTRY>
        <LENGTH>15</LENGTH>
       </item>
      </TEXTPOOL>
