@@ -16,11 +16,9 @@ No hace falta crear dynpro, contenedor ni PF-STATUS propios: el grupo de funcion
 
 Importar con [abapGit](https://abapgit.org). Requiere ABAP 7.40 o superior (expresiones `NEW`, `VALUE`, RTTS).
 
-Tras el import hay que generar manualmente en el sistema (abapGit no los serializa completos):
+El grupo de funciones `ZALV_FG` trae serializados el PF-STATUS `ZSTATUS` y los dynpros 9001–9010 con su custom control `CONTAINER`.
 
-- El **PF-STATUS `ZSTATUS`** del programa `SAPLZALV_FG` (usado por `display_pf_status`).
-- El **titlebar `MAIN`** del programa llamante (usado por `display_title`), o redefinir esos métodos.
-- Los dynpros 9001–9010 del grupo de funciones deben tener un custom control llamado `CONTAINER`.
+El programa llamante debe tener un **titlebar `MAIN`** (lo usa `display_title`), o la subclase debe redefinir ese método.
 
 ## Objetos del paquete
 
@@ -38,7 +36,7 @@ Tras el import hay que generar manualmente en el sistema (abapGit no los seriali
 1. `set_ref_data( ref #( itab ) )` recibe la tabla por referencia. Con RTTS detecta si la línea es un tipo DDIC:
    - Si lo es, el fieldcat se genera con `LVC_FIELDCATALOG_MERGE`.
    - Si no (tipo local), se genera con `cl_salv_data_descr=>read_structdescr`.
-2. `show( )` llama al FM `ZALV_SHOW`, que asigna el siguiente dynpro libre (9001–9010, es decir **hasta 10 ALVs apilados** en pantalla completa), crea el `cl_gui_custom_container` y ejecuta `create( )` + `display( )`.
+2. `show( )` llama al FM `ZALV_SHOW`, que asigna el siguiente dynpro libre (9001–9010, hasta 10 ALVs apilados; ver *Problemas conocidos* desde el tercer nivel), crea el `cl_gui_custom_container` y ejecuta `create( )` + `display( )`.
 3. Alternativamente, con `set_container( )` se puede incrustar el grid en un contenedor propio (ver `create( )`; sin contenedor usa `cl_gui_container=>screen0`).
 
 El grid queda **listo para edición** por defecto: se registran `mc_evt_modified` y `mc_evt_enter` y se llama `set_ready_for_input( 1 )`.
@@ -50,7 +48,7 @@ El grid queda **listo para edición** por defecto: se registran `mc_evt_modified
 | `create_fieldcat_exit( ref_fieldcat )` | Ajustar cada campo del catálogo (checkbox, edit, hotspot, textos…) |
 | `create_fieldcat_fill` | Reemplazar por completo la generación del catálogo |
 | `create_layout` | Ajustar `s_layout` (zebra, sel_mode, info_fname, etc.; trae comentadas las opciones más comunes) |
-| `display_pf_status` / `display_title` | Usar PF-STATUS / titlebar propios |
+| `display_pf_status` / `display_title` | Usar PF-STATUS / titlebar propios. Un status propio debe usar los códigos `BACK`, `EXIT` y `CANCEL` para salir: son los únicos que reconoce el PAI de `ZALV_FG` |
 | `display_ex_btn` | Poblar `t_grid_excluding` / `t_program_excluding` (trae comentado el listado completo de `mc_fc_*`) |
 | `on_toolbar` | Modificar la toolbar (por defecto elimina funciones de edición local, refresh, print, views, detail…) |
 | `on_data_changed`, `on_data_changed_finished`, `on_double_click`, `on_button_click`, `pai` | Hooks de eventos vacíos para redefinir |
@@ -65,7 +63,7 @@ El grid queda **listo para edición** por defecto: se registran `mc_evt_modified
 
 - `get_selected_rows( )` → `ZALV_T_ROW`: filas seleccionadas con referencia directa a los datos (ignora líneas de total/subtotal).
 - `refresh_display( )`: refresh estable que conserva filas y columnas seleccionadas.
-- `set_variant( )` / `s_variant`: control de variantes de disposición (por defecto `report = sy-cprog`, grabación `i_save = 'A'` y carga de la variante por defecto).
+- `set_variant( )` / `s_variant`: control de variantes de disposición (grabación `i_save = 'A'` y carga de la variante por defecto). `display_grid` siempre fija `report = sy-cprog`, así que el parámetro `report` de `set_variant` no tiene efecto.
 - `set_actvt( )`: guarda la actividad (`TACT`/`TACTT`) para usarla en verificaciones de autorización de la subclase.
 - Constantes en `c`:
   - `c-line_color-*`: los 28 códigos de color `Cxyz` con nombre (ver demo 2).
@@ -77,3 +75,11 @@ El grid queda **listo para edición** por defecto: se registran `mc_evt_modified
 
 - **ZALV_DEMO1**: subclase con checkboxes, columna editable y zebra sobre `SBOOK`.
 - **ZALV_DEMO2**: catálogo manual de 2 columnas y coloreado de líneas mostrando los 28 colores ALV con su código.
+
+## Problemas conocidos
+
+- **Campos OK sin declarar desde el tercer nivel.** El include `LZALV_FGTOP` declara solo `D9001_FCODE` y `D9002_FCODE`, pero los dynpros 9003–9010 usan `D9003_FCODE`…`D9010_FCODE` como campo OK. Si el sistema no los tiene declarados por otra vía, la generación de esas pantallas o el despacho de botones en `PAI_ALV` falla desde el tercer ALV apilado.
+- **Más de 10 niveles.** `ZALV_SHOW` calcula el dynpro como 9000 + nivel; un undécimo ALV pide la pantalla 9011, que no existe.
+- **Código de función sin limpiar.** `PAI_ALV` no limpia el campo OK después de llamar a `on_user_command`.
+- **Variante.** `set_variant( report = ... )` se ignora (ver *Utilidades públicas*).
+- **Hotspot en subtotales.** Si `get_subtotals` no devuelve la fila del subtotal, `on_hotspot_click` termina en dump. Las excepciones de los métodos `NAV_*` se descartan sin aviso.
