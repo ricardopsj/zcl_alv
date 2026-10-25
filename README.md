@@ -59,6 +59,7 @@ ref_alv->refresh_display( ).
 - Llamar a `display_grid( )` y no a `display( )`. `display( )` además fija el PF-STATUS `ZSTATUS` de `SAPLZALV_FG` y el titlebar `MAIN`, y reemplazaría el status de la pantalla propia.
 - `set_ref_data` guarda una referencia: la tabla debe seguir viva (por ejemplo, un atributo) mientras se muestre el grid.
 - Declarar en la subclase el atributo `ref_lt` tipado con la tabla, como hacen las subclases de los repos `frs_*`. `set_ref_data` lo asigna dinámicamente.
+- Si el grid se muestra vacío y se llena después, `refresh_display( )` deja las columnas angostas: ver *Ancho de columnas tras `refresh_display`* en *Problemas conocidos*.
 
 Ejemplo real: transacción `ZCLFI160` del repo `frs_ZCLFI160`.
 
@@ -83,7 +84,7 @@ Ejemplo real: transacción `ZCLFI160` del repo `frs_ZCLFI160`.
 ## Utilidades públicas
 
 - `get_selected_rows( )` → `ZALV_T_ROW`: filas seleccionadas con referencia directa a los datos (ignora líneas de total/subtotal).
-- `refresh_display( )`: refresh estable que conserva filas y columnas seleccionadas.
+- `refresh_display( )`: refresh estable que conserva filas y columnas seleccionadas. Es un *soft refresh*: no recalcula el ancho de las columnas (ver *Problemas conocidos*).
 - `set_variant( )` / `s_variant`: control de variantes de disposición (grabación `i_save = 'A'` y carga de la variante por defecto). `display_grid` siempre fija `report = sy-cprog`, así que el parámetro `report` de `set_variant` no tiene efecto.
 - `set_actvt( )`: guarda la actividad (`TACT`/`TACTT`) para usarla en verificaciones de autorización de la subclase.
 - Constantes en `c`:
@@ -103,4 +104,14 @@ Ejemplo real: transacción `ZCLFI160` del repo `frs_ZCLFI160`.
 - **Más de 10 niveles.** `ZALV_SHOW` calcula el dynpro como 9000 + nivel; un undécimo ALV pide la pantalla 9011, que no existe.
 - **Código de función sin limpiar.** `PAI_ALV` no limpia el campo OK después de llamar a `on_user_command`.
 - **Variante.** `set_variant( report = ... )` se ignora (ver *Utilidades públicas*).
+- **Ancho de columnas tras `refresh_display`.** `create_layout` activa `cwidth_opt`, pero el ancho se calcula solo al mostrar el grid; `refresh_display` usa `i_soft_refresh` y no lo recalcula. Si el grid se muestra vacío y se llena después (por ejemplo, en un contenedor propio), las columnas quedan angostas. Solución en el programa que lo usa:
+
+  ```abap
+  ref_alv->ref_grid->get_frontend_layout( importing es_layout = data(ls_layout) ).
+  ls_layout-cwidth_opt = abap_true.
+  ref_alv->ref_grid->set_frontend_layout( ls_layout ).
+  ref_alv->ref_grid->refresh_table_display( is_stable = value #( row = abap_true col = abap_true ) ).
+  ```
+
+  Ejemplo: método `refresh_list` de `ZCLFI160` (repo `frs_ZCLFI160`).
 - **Hotspot en subtotales.** Si `get_subtotals` no devuelve la fila del subtotal, `on_hotspot_click` termina en dump. Las excepciones de los métodos `NAV_*` se descartan sin aviso.
