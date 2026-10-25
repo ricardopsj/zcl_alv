@@ -37,9 +37,30 @@ El programa llamante debe tener un **titlebar `MAIN`** (lo usa `display_title`),
    - Si lo es, el fieldcat se genera con `LVC_FIELDCATALOG_MERGE`.
    - Si no (tipo local), se genera con `cl_salv_data_descr=>read_structdescr`.
 2. `show( )` llama al FM `ZALV_SHOW`, que asigna el siguiente dynpro libre (9001–9010, hasta 10 ALVs apilados; ver *Problemas conocidos* desde el tercer nivel), crea el `cl_gui_custom_container` y ejecuta `create( )` + `display( )`.
-3. Alternativamente, con `set_container( )` se puede incrustar el grid en un contenedor propio (ver `create( )`; sin contenedor usa `cl_gui_container=>screen0`).
+3. Alternativamente, con `set_container( )` se puede incrustar el grid en un contenedor propio (ver `create( )`; sin contenedor usa `cl_gui_container=>screen0`). Ver *Uso en un contenedor propio*.
 
 El grid queda **listo para edición** por defecto: se registran `mc_evt_modified` y `mc_evt_enter` y se llama `set_ready_for_input( 1 )`.
+
+## Uso en un contenedor propio
+
+Para mostrar el grid dentro de una pantalla propia (por ejemplo, en un lado de un `cl_gui_splitter_container`), en lugar de `show( )`:
+
+```abap
+ref_alv = new lcl_alv( ).
+ref_alv->set_container( ref_splitter->get_container( row = 1 column = 2 ) ).
+ref_alv->set_ref_data( ref #( mt_datos ) ).
+ref_alv->create( ).
+ref_alv->display_grid( ).
+
+" más tarde, tras cambiar el contenido de mt_datos:
+ref_alv->refresh_display( ).
+```
+
+- Llamar a `display_grid( )` y no a `display( )`. `display( )` además fija el PF-STATUS `ZSTATUS` de `SAPLZALV_FG` y el titlebar `MAIN`, y reemplazaría el status de la pantalla propia.
+- `set_ref_data` guarda una referencia: la tabla debe seguir viva (por ejemplo, un atributo) mientras se muestre el grid.
+- Declarar en la subclase el atributo `ref_lt` tipado con la tabla, como hacen las subclases de los repos `frs_*`. `set_ref_data` lo asigna dinámicamente.
+
+Ejemplo real: transacción `ZCLFI160` del repo `frs_ZCLFI160`.
 
 ## Puntos de extensión (heredar y redefinir)
 
