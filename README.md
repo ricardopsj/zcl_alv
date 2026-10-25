@@ -79,6 +79,10 @@ Ejemplo real: transacción `ZCLFI160` del repo `frs_ZCLFI160`.
 
 - **User command**: `on_user_command` llama dinámicamente al método `OK_<E_UCOMM>` de la subclase, pasándole `it_rows type zalv_t_row` con las filas seleccionadas (índice + referencia a la línea). Basta declarar en la subclase, por ejemplo, `methods ok_eliminar importing it_rows type zalv_t_row`.
 - **Hotspot**: `on_hotspot_click` llama dinámicamente a `NAV_<FIELDNAME>` con `dsd` y `hst` (rango de índices de fila). Funciona también al hacer clic sobre líneas de **subtotal** (resuelve el rango con `get_subtotals`) y de **total** (toda la tabla).
+  - La columna se marca con `ref_fieldcat->hotspot = abap_true` en `create_fieldcat_exit`.
+  - El método se declara en la sección **pública** de la subclase, por ejemplo `methods nav_name importing dsd type int4 hst type int4`. La llamada sale de `ZCL_ALV`, que no ve los métodos protegidos o privados de la subclase; en ese caso la excepción se descarta y el clic no hace nada, sin aviso.
+  - Para una fila normal, `dsd` = `hst` = índice en la tabla de datos (`ref_lt->*`), aunque el usuario haya ordenado el grid.
+  - Ejemplo: `nav_name` de `ZCLFI160` (repo `frs_ZCLFI160`) entra en la carpeta pinchada.
 - Antes de cada user command se ejecuta `check_changed_data( )` para volcar las ediciones pendientes.
 
 ## Utilidades públicas
